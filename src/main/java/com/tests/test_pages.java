@@ -19,8 +19,9 @@ public class test_pages {
     public void loadTheHomePage() throws InterruptedException {
         // Will be run once before all other tests i.e. they will then inherit the driver
         pageHome = new page_home();
-        driver = new ChromeDriver();
+
         System.setProperty("webdriver.chrome.driver", "C://Users//Evi//Desktop//Selenium//Chromedriver//chromedriver.exe");
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(pageHome.getUrl());
         Thread.sleep(1000);
@@ -29,20 +30,23 @@ public class test_pages {
     // Note that priority value is set as otherwise the tests will be run by name which will break the inheritance chain
 
     @Test(priority = 0)
-    public void testInvalidLogin() {
+    public void testInvalidLogin() throws InterruptedException {
         // Launch the home page, generate expected and actual URLs and compare them
         pageHome.enterUsername(driver,"1");
         pageHome.enterPassword(driver, "1");
         pageHome.clickloginButton(driver);
+        Thread.sleep(2000);
         pageHome.errorMessageIsDisplayed(driver);
+        Thread.sleep(2000);
 
     }
 
     @Test(priority =1)
-    public void testValidLogin() {
+    public void testValidLogin() throws InterruptedException {
         pageHome.enterUsername(driver,"maria");
         pageHome.enterPassword(driver, "thoushallnotpass");
         pageHome.clickloginButton(driver);
+        Thread.sleep(2000);
         pageHome.logoutButtonIsDisplayed(driver);
     }
 

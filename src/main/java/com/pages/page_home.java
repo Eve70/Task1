@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class page_home {
     //Locatig page elements:
-    private By loginButton = By.className("Log in");
+    private By loginButton = By.linkText("Log in");
     private By inputUsername = By.id("username");
     private By inputPassword = By.id("password");
     private By errorMessage = By.className("alert alert-warning");
