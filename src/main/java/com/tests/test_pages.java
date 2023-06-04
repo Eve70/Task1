@@ -35,10 +35,12 @@ public class test_pages {
         pageHome.enterUsername(driver,"1");
         pageHome.enterPassword(driver, "1");
         pageHome.clickloginButton(driver);
-        Thread.sleep(2000);
+        Thread.sleep(8000);
         pageHome.errorMessageIsDisplayed(driver);
         Thread.sleep(2000);
-
+        pageHome.clearUsername(driver);
+        pageHome.clearPassword(driver);
+        Thread.sleep(2000);
     }
 
     @Test(priority =1)
