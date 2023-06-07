@@ -4,9 +4,7 @@ import com.pages.page_home;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class test_pages {
 
@@ -38,8 +36,7 @@ public class test_pages {
         Thread.sleep(8000);
         pageHome.errorMessageIsDisplayed(driver);
         Thread.sleep(2000);
-        pageHome.clearUsername(driver);
-        pageHome.clearPassword(driver);
+        pageHome.clearInput(driver);
         Thread.sleep(2000);
     }
 
@@ -50,6 +47,7 @@ public class test_pages {
         pageHome.clickloginButton(driver);
         Thread.sleep(2000);
         pageHome.logoutButtonIsDisplayed(driver);
+        Thread.sleep(2000);
     }
 
     @AfterTest

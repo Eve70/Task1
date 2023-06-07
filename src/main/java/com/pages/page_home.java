@@ -12,6 +12,7 @@ public class page_home {
     private By inputPassword = By.id("password");
     private By errorMessage = By.className("alert alert-warning");
     private By logoutButton = By.id("logout");
+    private By form = By.className("form-group");
 
     private String baseUrl = "https://robotsparebinindustries.com/";
 
@@ -45,14 +46,9 @@ public class page_home {
         driver.findElement(loginButton).isDisplayed();
         return driver;
     }
-
-    public WebDriver clearUsername(WebDriver driver) {
-        driver.findElement(inputPassword).sendKeys(Keys.DELETE);
-        return driver;
-    }
-
-    public WebDriver clearPassword(WebDriver driver) {
-        driver.findElement(inputPassword).sendKeys(Keys.DELETE);
+    public WebDriver clearInput(WebDriver driver){
+        driver.findElement(inputUsername).getText().trim();
+        driver.findElement(inputPassword).getText().trim();
         return driver;
     }
 }
