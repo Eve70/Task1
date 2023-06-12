@@ -9,15 +9,12 @@ import org.testng.annotations.*;
 public class test_pages {
 
     WebDriver driver;
-    //page_elements pageElements;
     page_home pageHome;
 
 
     @BeforeTest
     public void loadTheHomePage() throws InterruptedException {
-        // Will be run once before all other tests i.e. they will then inherit the driver
         pageHome = new page_home();
-
         System.setProperty("webdriver.chrome.driver", "C://Users//Evi//Desktop//Selenium//Chromedriver//chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();

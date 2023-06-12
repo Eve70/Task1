@@ -47,8 +47,10 @@ public class page_home {
         return driver;
     }
     public WebDriver clearInput(WebDriver driver){
-        driver.findElement(inputUsername).getText().trim();
-        driver.findElement(inputPassword).getText().trim();
+        driver.findElement(inputUsername).click();
+        driver.findElement(inputUsername).clear();
+        driver.findElement(inputPassword).click();
+        driver.findElement(inputPassword).clear();
         return driver;
     }
 }
