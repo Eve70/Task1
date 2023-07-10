@@ -2,6 +2,7 @@ package com.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class user_home {
     private By submitButton = By.linkText("Submit");
@@ -29,8 +30,9 @@ public class user_home {
         driver.findElement(inputLastName).sendKeys(lastName);
         return driver;
     }
-    public WebDriver selectSalesTarget(WebDriver driver){
-        driver.findElement(selectSalesTarget);
+    public WebDriver selectSalesTarget(WebDriver driver, String salesTarget){
+        Select selectTarget = new Select(driver.findElement(selectSalesTarget));
+        selectTarget.selectByValue(salesTarget);
         return driver;
     }
     public WebDriver enterSalesResult(WebDriver driver, String salesResult){

@@ -53,13 +53,41 @@ public class test_pages {
         userHome.formIsDisplayed(driver);
     }
     @Test(priority = 2)
-    public void canSubmitSalesForm(){
+    public void canSubmitPositiveSalesForm(){
         userHome.formIsDisplayed(driver);
         userHome.enterFirstName(driver, "Maria");
         userHome.enterLastName(driver, "Ivanova");
-        userHome.selectSalesTarget(driver);
+        userHome.selectSalesTarget(driver, "40000");
         userHome.enterSalesResult(driver, "50000");
         userHome.submitSaleForm(driver);
+    }
+    @Test(priority = 2)
+    public void canSubmitNegativeSalesForm(){
+        userHome.formIsDisplayed(driver);
+        userHome.enterFirstName(driver, "Maria");
+        userHome.enterLastName(driver, "Ivanova");
+        userHome.selectSalesTarget(driver, "60000");
+        userHome.enterSalesResult(driver, "50000");
+        userHome.submitSaleForm(driver);
+    }
+    @Test(priority = 2)
+    public void canSubmitEqualSalesForm(){
+        userHome.formIsDisplayed(driver);
+        userHome.enterFirstName(driver, "Maria");
+        userHome.enterLastName(driver, "Ivanova");
+        userHome.selectSalesTarget(driver, "5000");
+        userHome.enterSalesResult(driver, "5000");
+        userHome.submitSaleForm(driver);
+    }
+    @Test(priority = 2)
+    public void viewPerformance(){
+        userHome.formIsDisplayed(driver);
+        userHome.showPerformance(driver);
+    }
+    @Test(priority = 2)
+    public void deleteAllEntries(){
+        userHome.formIsDisplayed(driver);
+        userHome.deleteAllEntries(driver);
     }
 
     @AfterTest
