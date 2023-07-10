@@ -1,7 +1,7 @@
 package com.tests;
 
 import com.pages.page_home;
-import org.junit.Assert;
+import com.pages.user_home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -10,16 +10,17 @@ public class test_pages {
 
     WebDriver driver;
     page_home pageHome;
+    user_home userHome;
 
 
     @BeforeTest
     public void loadTheHomePage() throws InterruptedException {
         pageHome = new page_home();
-        System.setProperty("webdriver.chrome.driver", "C://Users//Evi//Desktop//Selenium//Chromedriver//chromedriver.exe");
+        userHome = new user_home();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(pageHome.getUrl());
-        Thread.sleep(1000);
+        wait(2000);
     }
 
     // Note that priority value is set as otherwise the tests will be run by name which will break the inheritance chain
@@ -30,11 +31,10 @@ public class test_pages {
         pageHome.enterUsername(driver,"1");
         pageHome.enterPassword(driver, "1");
         pageHome.clickloginButton(driver);
-        Thread.sleep(8000);
+        pageHome.waitUntilErrorMessageIsDisplayed(driver);
         pageHome.errorMessageIsDisplayed(driver);
-        Thread.sleep(2000);
         pageHome.clearInput(driver);
-        Thread.sleep(2000);
+        wait(2000);
     }
 
     @Test(priority =1)
@@ -42,13 +42,29 @@ public class test_pages {
         pageHome.enterUsername(driver,"maria");
         pageHome.enterPassword(driver, "thoushallnotpass");
         pageHome.clickloginButton(driver);
-        Thread.sleep(2000);
+        wait(2000);
         pageHome.logoutButtonIsDisplayed(driver);
-        Thread.sleep(2000);
+        wait(2000);
+            }
+    @Test(priority = 2)
+    public void cannotSubmitEmptySalesForm(){
+        userHome.formIsDisplayed(driver);
+        userHome.submitSaleForm(driver);
+        userHome.formIsDisplayed(driver);
+    }
+    @Test(priority = 2)
+    public void canSubmitSalesForm(){
+        userHome.formIsDisplayed(driver);
+        userHome.enterFirstName(driver, "Maria");
+        userHome.enterLastName(driver, "Ivanova");
+        userHome.selectSalesTarget(driver);
+        userHome.enterSalesResult(driver, "50000");
+        userHome.submitSaleForm(driver);
     }
 
     @AfterTest
     public void cleanup() {
         driver.quit();
     }
+
 }
